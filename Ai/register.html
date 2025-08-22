@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>فرم ثبت‌نام VIP</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Vazir', sans-serif;
+      background: linear-gradient(135deg, #d8eaff, #c0dbff);
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 10px 30px rgba(0, 72, 173, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      color: #004aad;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 10px;
+      background-color: #0077ff;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005fd3;
+    }
+    .msg {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>فرم ثبت‌نام VIP</h2>
+    <form id="registerForm">
+      <label for="name">نام کامل:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">ایمیل:</label>
+      <input type="email" id="email" required>
+
+      <label for="phone">شماره تماس:</label>
+      <input type="tel" id="phone" required>
+
+      <button type="submit">ثبت‌نام</button>
+    </form>
+    <div class="msg" id="msgBox"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const msgBox = document.getElementById('msgBox');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const confirmPay = confirm("آیا مایلید با پرداخت 1,000,000 تومان ثبت‌نام را انجام دهید؟");
+      if (!confirmPay) {
+        msgBox.textContent = "ثبت‌نام لغو شد.";
+        msgBox.style.color = "red";
+        return;
+      }
+
+      const user = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value
+      };
+
+      localStorage.setItem('vipUser', JSON.stringify(user));
+      msgBox.textContent = "در حال انتقال به درگاه پرداخت...";
+      msgBox.style.color = "green";
+
+      setTimeout(() => {
+        // درگاه پرداخت شبیه‌سازی شده یا واقعی:
+        window.location.href = "https://www.behpardakht.com/pgw/?RefId=EXAMPLE123";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پرتال یادگیری هوش مصنوعی و برنامه‌نویسی</title>
+  
+  <!-- فونت Vazirmatn گوگل (شبیه ایران‌سنس) -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+  
+  <style>
+    /* تنظیمات پایه */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Vazir', Tahoma, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #e0f0ff, #c0d8ff);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #004aad;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #0057e7, #0096ff, #0057e7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rgbShift 5s ease-in-out infinite alternate;
+    }
+    @keyframes rgbShift {
+      0% {background-position: 0%;}
+      100% {background-position: 100%;}
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255 255 255 / 0.85);
+      box-shadow: 0 10px 25px rgb(0 72 173 / 0.15);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    h2 {
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #004aad;
+      user-select: none;
+    }
+    p, ul {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1.2rem;
+    }
+    ul {
+      list-style: inside disc;
+      text-align: right;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+
+    /* ویدیوهای آموزشی */
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .video-box {
+      background: #f0f7ff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgb(0 72 173 / 0.15);
+      padding: 10px;
+      width: 280px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .video-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgb(0 72 173 / 0.3);
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .video-box h3 {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #004aad;
+    }
+
+    /* سمینار */
+    .seminar-section {
+      background: #d9eaff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgb(0 72 173 / 0.1);
+    }
+    .seminar-section p {
+      font-size: 1.15rem;
+      color: #013369;
+    }
+
+    .interactive-section {
+  background: #cfe5ff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgb(0 72 173 / 0.15);
+  user-select: none;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+#questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.question-btn {
+  background: white;
+  border: 2px solid #004aad;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 1.1rem;
+  color: #004aad;
+  cursor: pointer;
+  text-align: right;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.question-btn:hover,
+.question-btn:focus {
+  background-color: #004aad;
+  color: white;
+  outline: none;
+}
+
+.question-btn:focus-visible {
+  outline: 3px solid #0074ff;
+  outline-offset: 3px;
+}
+
+#answer-box {
+  background: #e6f0ff;
+  border-radius: 14px;
+  padding: 18px 24px;
+  color: #004aad;
+  font-weight: 600;
+  min-height: 80px;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+
+    /* فوتر */
+    footer {
+      width: 100%;
+      background: #003780;
+      color: #fff;
+      text-align: center;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      user-select: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 -3px 10px rgb(0 72 173 / 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+    footer button {
+      background: #0074ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    footer button:hover {
+      background: #0057b8;
+    }
+
+    /* مودال پنل کاربری */
+    #user-panel-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    #user-panel-modal.active {
+      display: flex;
+    }
+    #user-panel {
+      background: white;
+      border-radius: 18px;
+      max-width: 400px;
+      width: 100%;
+      padding: 30px 25px;
+      box-shadow: 0 12px 30px rgb(0 72 173 / 0.3);
+      text-align: center;
+    }
+    #user-panel h2 {
+      font-weight: 900;
+      color: #004aad;
+      margin-bottom: 15px;
+      user-select: none;
+    }
+    #user-panel p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #004080;
+    }
+    #user-panel button {
+      background: #004aad;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 25px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #user-panel button:hover {
+      background: #002e6a;
+    }
+
+    /* بخش ساعت و تاریخ */
+    #datetime {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #004aad;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+
+    /* ریسپانسیو */
+    @media (max-width: 600px) {
+      main {
+        padding: 20px 15px;
+      }
+      .video-box {
+        width: 100%;
+      }
+      header {
+        font-size: 2rem;
+      }
+      footer {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>پرتال یادگیری هوش مصنوعی و برنامه‌نویسی با محمدطاها خالدآبادی</header>
+
+<main>
+  <div id="datetime" aria-live="polite" aria-atomic="true"></div>
+
+  <section class="seminar-section" aria-label="سمینار آموزشی">
+    <h2>سمینارهای آموزشی ما</h2>
+    <p>همراه با ویدیوهای تخصصی و تمرین‌های تعاملی برای یادگیری عمیق و کاربردی.</p>
+  </section>
+
+  <section class="video-container" aria-label="ویدیوهای آموزشی">
+    <div class="video-box" tabindex="0">
+      <iframe src="https://www.youtube.com/embed/tf5dhEJb8SE" title="آموزش مقدماتی هوش مصنوعی" frameborder="0" allowfullscreen></iframe>
+      <h3>آموزش مقدماتی هوش مصنوعی</h3>
+    </div>
+    <div class="video-box" tabindex="0">
+      <iframe src="https://www.youtube.com/embed/aircAruvnKk" title="یادگیری ماشین برای مبتدیان" frameborder="0" allowfullscreen></iframe>
+      <h3>یادگیری ماشین برای مبتدیان</h3>
+    </div>
+    <div class="video-box" tabindex="0">
+      <iframe src="https://www.youtube.com/embed/6j4VfB3TU-M" title="تمرین تعاملی: شبکه‌های عصبی" frameborder="0" allowfullscreen></iframe>
+      <h3>تمرین تعاملی: شبکه‌های عصبی</h3>
+    </div>
+  </section>
+
+  <section class="interactive-section" aria-label="تمرین تعاملی">
+  <h2>تمرین تعاملی</h2>
+  
+  <div id="questions-container" role="list" aria-label="سوالات هوش مصنوعی">
+    <button role="listitem" class="question-btn" data-answer="هوش مصنوعی (Artificial Intelligence) شاخه‌ای از علوم کامپیوتر است که به ساخت سیستم‌هایی می‌پردازد که قادر به انجام کارهایی هستند که معمولاً به هوش انسانی نیاز دارند.">هوش مصنوعی چیست؟</button>
+
+    <button role="listitem" class="question-btn" data-answer="یادگیری ماشین زیرمجموعه‌ای از هوش مصنوعی است که بر توسعه الگوریتم‌هایی تمرکز دارد که به سیستم‌ها امکان می‌دهد از داده‌ها یاد بگیرند و پیش‌بینی یا تصمیم‌گیری کنند.">یادگیری ماشین چیست؟</button>
+
+    <button role="listitem" class="question-btn" data-answer="شبکه‌های عصبی ساختاری از الگوریتم‌ها هستند که از عملکرد مغز انسان الهام گرفته شده‌اند و در پردازش داده‌ها و یادگیری پیچیده به کار می‌روند.">شبکه عصبی چیست؟</button>
+
+    <button role="listitem" class="question-btn" data-answer="یادگیری عمیق شاخه‌ای از یادگیری ماشین است که با شبکه‌های عصبی چندلایه به مدل‌سازی داده‌های پیچیده می‌پردازد.">یادگیری عمیق چیست؟</button>
+
+    <button role="listitem" class="question-btn" data-answer="پردازش زبان طبیعی (NLP) بخشی از هوش مصنوعی است که به تعامل بین کامپیوتر و زبان انسانی می‌پردازد.">پردازش زبان طبیعی چیست؟</button>
+  </div>
+  
+  <div id="answer-box" role="region" aria-live="polite" aria-atomic="true" tabindex="0" aria-label="پاسخ سوال انتخاب شده"></div>
+</section>
+
+</main>
+
+<footer>
+  <span>© ۱۴۰۴ | 2025 | ساعت: <span id="time-now">--:--:--</span></span>
+  <button id="vip-login-btn" aria-haspopup="dialog" aria-controls="user-panel-modal">ورود VIP</button>
+</footer>
+
+<!-- مودال پنل کاربری -->
+<div id="user-panel-modal" role="dialog" aria-modal="true" aria-labelledby="user-panel-title">
+  <div id="user-panel">
+    <h2 id="user-panel-title">پنل کاربری VIP</h2>
+    <p>خوش آمدید به بخش ویژه اعضا!</p>
+    <button id="logout-btn">خروج</button>
+  </div>
+</div>
+
+<script>
+  // تاریخ و ساعت دقیق با به‌روزرسانی هر ثانیه
+  function updateDateTime() {
+    const now = new Date();
+
+    // تاریخ شمسی
+    const optionsFa = {year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'persian'};
+    // برای اینکه Chrome و Firefox و... پشتیبانی کنند، تاریخ شمسی را به صورت دستی نمی‌شود گرفت.
+    // جایگزین: استفاده از کتابخانه مثل moment-jalaali یا ساده سازی:
+    // اینجا فقط تاریخ میلادی می‌دهیم و تاریخ شمسی را جداگانه بنویسید یا حذف کنید.
+
+    // تاریخ میلادی
+    const dateEn = now.toLocaleDateString('en-GB');
+
+    // ساعت
+    const timeString = now.toLocaleTimeString('fa-IR');
+
+    const datetimeDiv = document.getElementById('datetime');
+    datetimeDiv.textContent = `تاریخ میلادی: ${dateEn} — ساعت: ${timeString}`;
+
+    const timeNowSpan = document.getElementById('time-now');
+    timeNowSpan.textContent = timeString;
+  }
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
+
+  const questionButtons = document.querySelectorAll('.question-btn');
+const answerBox = document.getElementById('answer-box');
+
+questionButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // حذف کلاس انتخاب از همه دکمه‌ها
+    questionButtons.forEach(b => b.classList.remove('selected'));
+    // اضافه کردن کلاس انتخاب به دکمه کلیک شده
+    btn.classList.add('selected');
+
+    const answer = btn.getAttribute('data-answer');
+    answerBox.textContent = answer;
+    answerBox.focus();
+  });
+});
+
+  // ورود VIP و پنل کاربری
+ const vipLoginBtn = document.getElementById('vip-login-btn');
+
+vipLoginBtn.addEventListener('click', () => {
+  window.location.href = "vip-panel.html";
+}); 
+</script>
+</body>
+</html>

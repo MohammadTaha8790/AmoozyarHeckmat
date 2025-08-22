@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>افتخارات من</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazir', Tahoma, sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom right, #e0f2fe, #f9fafb);
+      min-height: 100vh;
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 900px;
+      width: 100%;
+      padding: 40px 30px;
+    }
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #1e40af;
+    }
+    .honors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .honor-card {
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+      transition: 0.3s ease;
+    }
+    .honor-card:hover {
+      background: #e2e8f0;
+      transform: translateY(-4px);
+    }
+    .honor-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+    .honor-desc {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏅 افتخارات من</h1>
+    <div class="honors-grid">
+      <div class="honor-card">
+        <div class="honor-title">نشان طلایی هوش مصنوعی</div>
+        <div class="honor-desc">کسب نمره کامل در دوره "یادگیری هوش مصنوعی با محمدطاها خالدآبادی"</div>
+      </div>
+      <div class="honor-card">
+        <div class="honor-title">مدال تعامل فعال</div>
+        <div class="honor-desc">پاسخ‌دهی به بیش از ۵۰ سؤال در انجمن کاربران</div>
+      </div>
+      <div class="honor-card">
+        <div class="honor-title">پروژه برتر</div>
+        <div class="honor-desc">طراحی موفق پروژه شخصی با استفاده از دانش هوش مصنوعی</div>
+      </div>
+      <div class="honor-card">
+        <div class="honor-title">تکمیل تمامی دوره‌ها</div>
+        <div class="honor-desc">پایان موفق تمام بخش‌های آموزش تعاملی</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
